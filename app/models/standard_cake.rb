@@ -1,0 +1,2 @@
+class StandardCake < ApplicationRecord
+end
