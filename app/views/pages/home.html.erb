@@ -1,2 +1,35 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://images.unsplash.com/photo-1551879400-111a9087cd86?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60);">
+  <div class="container-home">
+    <div id="landing-page-form" class="col-xs-9 col-md-6">
+      <h1>La Docura</h1>
+      <p >Um docinho gostoso</p>
+
+      <% if user_signed_in? %>
+        <% if current_user.admin? %>
+         <div>
+          <div class="button-box">
+            <%= link_to("Mes saisons", "#", class: "btn-outline") %>
+          </div >
+          <div class="button-box">
+            <%= link_to("Sauveteurs", "#", class:"btn-outline")  %>
+          </div>
+          <div class="button-box">
+          <%= link_to("Plages du secteur", "#", class:"btn-outline")  %>
+          </div>
+        </div>
+        <% end %>
+
+      <% else %>
+        <div>
+          <div class="button-box">
+            <%= link_to("Ver o cardapio", standard_cakes_path, class:"btn-outline")  %>
+          </div >
+          <div class="button-box">
+            <%= link_to("Montar o meu bolo", new_customized_cakes_path, class:"btn-outline")  %>
+          </div>
+        </div>
+      <% end %>
+
+    </div>
+  </div>
+</div>
