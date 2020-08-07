@@ -1,0 +1,12 @@
+<div class="row">
+  <% @standard_cakes.each do |standard_cake| %>
+    <div class="col-xs-12 col-md-4">
+      <div class="card-cake" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%=standard_cake.image_url%>);">
+        <%= link_to("", standard_cake_path(standard_cake.id), class:"card-link")  %>
+         <div>
+          <h2 class="text-center"><%= standard_cake.name %> </h2>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

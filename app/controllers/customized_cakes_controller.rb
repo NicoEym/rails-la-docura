@@ -1,4 +1,5 @@
 class CustomizedCakesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:new, :edit]
   before_action :set_customized_cake, only: [:show, :edit, :update, :destroy]
 
   def new
