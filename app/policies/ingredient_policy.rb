@@ -10,7 +10,7 @@ class IngredientPolicy < ApplicationPolicy
   end
 
   def show?
-    true
+    user_is_admin?
   end
 
   def update?
