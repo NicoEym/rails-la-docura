@@ -1,4 +1,5 @@
 class StandardCakesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_standard_cake, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -20,7 +21,9 @@ class StandardCakesController < ApplicationController
   end
 
   def index
-    @standard_cake = policy_scope(StandardCake)
+    @standard_cakes = policy_scope(StandardCake)
+    authorize @standard_cakes
+    @standard_cake = StandardCake.new
   end
 
   def edit
