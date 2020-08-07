@@ -2,12 +2,13 @@ class IngredientsController < ApplicationController
   before_action :set_ingredient, only: [:show, :edit, :update, :destroy]
 
   def new
-    @ingredient = ingredient.new
+    @ingredient = Ingredient.new
     authorize @ingredient
+    @ingredient_categories = IngredientCategory.all
   end
 
   def create
-    @ingredient = ingredient.new(ingredient_params)
+    @ingredient = Ingredient.new(ingredient_params)
     authorize @ingredient
     if @ingredient.save
       redirect_to ingredient_path(@ingredient)
@@ -42,7 +43,7 @@ class IngredientsController < ApplicationController
   private
 
   def set_ingredient
-    @ingredient = ingredient.find(params[:id])
+    @ingredient = Ingredient.find(params[:id])
     authorize @ingredient
   end
 

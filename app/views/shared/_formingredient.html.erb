@@ -1,0 +1,18 @@
+<div class="log-form col-xs-12 col-md-4">
+  <% if current_page?(controller: 'ingredients', action: 'new')  %>
+    <h2>Adicionar um ingrediente</h2>
+  <% else %>
+    <h2>Editar o ingrediente <%= @ingredient.name%></h2>
+  <% end %>
+
+
+    <%= simple_form_for [@ingredient]  do |f| %>
+      <%= f.input :name, label: 'Nome:'%>
+      <%= f.input :price, label: "Preço:" %>
+      <%= f.input :ingredient_category, label: "Categoria:" %>
+      <%= f.input :user_id, collection: @ingredient_categories,label_method: :name %>
+
+      <%= f.submit "Validar este ingrediente", class: "btn btn-lg btn-primary blue-nav col-xs-9 col-md-12" %>
+    <% end %>
+
+</div>
