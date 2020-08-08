@@ -6,6 +6,7 @@
 @import "button";
 @import "card";
 @import "form";
+@import "footer";
 
 .container {
   min-height:100vh;
@@ -35,7 +36,7 @@ a { color: inherit;
   }
 }
 
-.white-color {
+.font-white {
   color: white!important;
 }
 
