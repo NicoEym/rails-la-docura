@@ -5,7 +5,6 @@
     <h2>Editar o bolo <%= @standard_cake.name%></h2>
   <% end %>
 
-
     <%= simple_form_for [@standard_cake]  do |f| %>
       <%= f.input :name, label: 'Nome:'%>
       <%= f.input :price, label: "Preço:" %>

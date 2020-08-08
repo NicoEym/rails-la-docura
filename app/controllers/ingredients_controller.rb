@@ -11,7 +11,7 @@ class IngredientsController < ApplicationController
     @ingredient = Ingredient.new(ingredient_params)
     authorize @ingredient
     if @ingredient.save
-      redirect_to ingredient_path(@ingredient)
+      redirect_to ingredients_path
     else
       render :new
     end
@@ -21,7 +21,7 @@ class IngredientsController < ApplicationController
   end
 
   def index
-    @ingredient = policy_scope(Ingredient)
+    @ingredients = policy_scope(Ingredient)
   end
 
   def edit
@@ -29,7 +29,7 @@ class IngredientsController < ApplicationController
 
   def update
     if @ingredient.update(ingredient_params)
-      redirect_to ingredient_path(@ingredient)
+      redirect_to ingredients_path
     else
       render :edit
     end

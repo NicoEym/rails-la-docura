@@ -5,6 +5,7 @@ class CustomizedCakesController < ApplicationController
   def new
     @customized_cake = CustomizedCake.new
     authorize @customized_cake
+    5.times { @customized_cake.cake_ingredients.build }
   end
 
   def create
@@ -25,6 +26,7 @@ class CustomizedCakesController < ApplicationController
   end
 
   def edit
+    @cake_ingredients = CakeIngredient.where(customized_cake: @customized_cake)
   end
 
   def update
@@ -48,6 +50,6 @@ class CustomizedCakesController < ApplicationController
   end
 
   def customized_cake_params
-    params.require(:customized_cake).permit(:name, :price, :customized_cake_category_id)
+    params.require(:customized_cake).permit(:name, :price, cake_ingredients_attributes: [:id, :ingredient_id, :_destroy])
   end
 end

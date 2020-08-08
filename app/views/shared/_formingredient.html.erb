@@ -9,10 +9,8 @@
     <%= simple_form_for [@ingredient]  do |f| %>
       <%= f.input :name, label: 'Nome:'%>
       <%= f.input :price, label: "Preço:" %>
-      <%= f.input :ingredient_category, label: "Categoria:" %>
-      <%= f.input :user_id, collection: @ingredient_categories,label_method: :name %>
+      <%= f.input :ingredient_category, collection: @ingredient_categories, label_method: :name, label: "Categoria:", %>
 
       <%= f.submit "Validar este ingrediente", class: "btn btn-lg btn-primary blue-nav col-xs-9 col-md-12" %>
     <% end %>
-
 </div>
