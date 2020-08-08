@@ -4,9 +4,8 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   resources :standard_cakes
-  resources :ingredient_categories do
-    resources :ingredients
-  end
+
+  resources :ingredients
 
   resources :customized_cakes
 
