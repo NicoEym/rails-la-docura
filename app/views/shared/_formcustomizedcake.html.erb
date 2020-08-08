@@ -1,0 +1,37 @@
+<div class="log-form col-xs-12 col-md-4">
+  <% if current_page?(controller: 'customized_cakes', action: 'new')  %>
+    <h2>Montar o meu bolo</h2>
+  <% else %>
+    <h2>Editar o meu bolo <%= @standard_cake.name%></h2>
+  <% end %>
+
+
+    <%= simple_form_for [@customized_cake]  do |f| %>
+
+      <h5>Escolher a massa:</h5>
+        <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[0] do |ff| %>
+        <%= ff.input :user_id, collection: @available_heads, label_method: :full_name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, html: {class: "form-control"}, label: false %>
+      <% end %>
+
+      <h5>Escolher o recheio:</h5>
+        <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[1] do |ff| %>
+          <%= ff.input :user_id, collection: @available_arms, label_method: :full_name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+        <% end %>
+
+      <h5>Escolher a cobertura:</h5>
+          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[2] do |ff| %>
+          <%= ff.input :user_id, collection: @available_arms, label_method: :full_name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+        <% end %>
+      <h5>Escolher a decoração:</h5>
+          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[3] do |ff| %>
+          <%= ff.input :user_id, collection: @available_arms, label_method: :full_name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+        <% end %>
+
+      <h5>Escolher o formato do bolo:</h5>
+          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[4] do |ff| %>
+          <%= ff.input :user_id, collection: @available_arms, label_method: :full_name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+          <% end %>
+      <%= f.submit "Validar o bolo", class: "btn btn-lg btn-primary blue-nav col-xs-9 col-md-12" %>
+    <% end %>
+
+</div>

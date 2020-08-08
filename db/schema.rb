@@ -10,18 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_06_015558) do
+ActiveRecord::Schema.define(version: 2020_08_07_235300) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cake_ingredients", force: :cascade do |t|
-    t.bigint "order_id"
+    t.bigint "customized_cake_id"
     t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["customized_cake_id"], name: "index_cake_ingredients_on_customized_cake_id"
     t.index ["ingredient_id"], name: "index_cake_ingredients_on_ingredient_id"
-    t.index ["order_id"], name: "index_cake_ingredients_on_order_id"
   end
 
   create_table "customized_cakes", force: :cascade do |t|
@@ -70,7 +70,7 @@ ActiveRecord::Schema.define(version: 2020_08_06_015558) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "cake_ingredients", "customized_cakes", column: "order_id"
+  add_foreign_key "cake_ingredients", "customized_cakes"
   add_foreign_key "cake_ingredients", "ingredients"
   add_foreign_key "ingredients", "ingredient_categories"
 end
