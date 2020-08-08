@@ -17,12 +17,12 @@ class Ingredient < ApplicationRecord
   end
 
   def self.all_decoration_type
-    decoration = IngredientCategory.find_by(name: "Massa")
+    decoration = IngredientCategory.find_by(name: "Decoração")
     self.where(ingredient_category: decoration)
   end
 
   def self.all_shape_type
-    shape = IngredientCategory.find_by(name: "Massa")
+    shape = IngredientCategory.find_by(name: "Formato do bolo")
     self.where(ingredient_category: shape)
   end
 end

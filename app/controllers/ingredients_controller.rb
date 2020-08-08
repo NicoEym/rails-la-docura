@@ -22,9 +22,11 @@ class IngredientsController < ApplicationController
 
   def index
     @ingredients = policy_scope(Ingredient)
+    @ingredient = Ingredient.new
   end
 
   def edit
+    @ingredient_categories = IngredientCategory.all
   end
 
   def update
@@ -37,7 +39,7 @@ class IngredientsController < ApplicationController
 
   def destroy
     @ingredient.destroy
-    redirect_to ingredientes_path
+    redirect_to ingredients_path
   end
 
   private

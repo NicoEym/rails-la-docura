@@ -8,13 +8,13 @@
         <% if current_user.admin? %>
          <div>
           <div class="button-box">
-            <%= link_to("Mes saisons", "#", class: "btn-outline") %>
+            <%= link_to("Meus bolos", standard_cakes_path, class: "btn-outline") %>
           </div >
           <div class="button-box">
-            <%= link_to("Sauveteurs", "#", class:"btn-outline")  %>
+            <%= link_to("Meus pedidos", "#", class:"btn-outline")  %>
           </div>
           <div class="button-box">
-          <%= link_to("Plages du secteur", "#", class:"btn-outline")  %>
+          <%= link_to("Meus ingredientes", ingredients_path, class:"btn-outline")  %>
           </div>
         </div>
         <% end %>

@@ -2,7 +2,7 @@
   <% if current_page?(controller: 'customized_cakes', action: 'new')  %>
     <h2>Montar o meu bolo</h2>
   <% else %>
-    <h2>Editar o meu bolo <%= @standard_cake.name%></h2>
+    <h2>Editar o meu bolo</h2>
   <% end %>
 
 
@@ -10,26 +10,26 @@
 
       <h5>Escolher a massa:</h5>
         <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[0] do |ff| %>
-        <%= ff.input :ingredient_id, collection: Ingredient.all_dough_style, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, html: {class: "form-control"}, label: false %>
+        <%= ff.input :ingredient_id, collection: Ingredient.all_dough_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, html: {class: "form-control"}, label: false %>
       <% end %>
 
       <h5>Escolher o recheio:</h5>
         <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[1] do |ff| %>
-          <%= ff.input :ingredient_id, collection: Ingredient.all_filling_style, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+          <%= ff.input :ingredient_id, collection: Ingredient.all_filling_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
         <% end %>
 
       <h5>Escolher a cobertura:</h5>
           <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[2] do |ff| %>
-          <%= ff.input :ingredient_id, collection: Ingredient.all_icing_style, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+          <%= ff.input :ingredient_id, collection: Ingredient.all_icing_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
         <% end %>
       <h5>Escolher a decoração:</h5>
           <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[3] do |ff| %>
-          <%= ff.input :ingredient_id, collection: Ingredient.all_decoration_style, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+          <%= ff.input :ingredient_id, collection: Ingredient.all_decoration_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
         <% end %>
 
       <h5>Escolher o formato do bolo:</h5>
           <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[4] do |ff| %>
-          <%= ff.input :ingredient_id, collection: Ingredient.all_shape_style, label_method: :full_name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+          <%= ff.input :ingredient_id, collection: Ingredient.all_shape_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
           <% end %>
       <%= f.submit "Validar o bolo", class: "btn btn-lg btn-primary blue-nav col-xs-9 col-md-12" %>
     <% end %>
