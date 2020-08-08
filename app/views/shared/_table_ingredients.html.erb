@@ -1,0 +1,34 @@
+
+<table class="table">
+        <thead>
+          <tr class="text-center black">
+            <th colspan="5"><%= category.name%></th>
+          </tr>
+          <tr class="text-center black">
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th>Modificar</th>
+            <th>Apagar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <%  ingredients = category.ingredients %>
+        <% ingredients.each do |ingredient| %>
+
+           <tr class="text-center black">
+            <td colspan="1"><%= ingredient.name %></td>
+            <td colspan="1"><%= ingredient.price %></td>
+            <td colspan="1"><%= ingredient.ingredient_category.name %></td>
+            <% if policy(ingredient).edit? %>
+               <td colspan="1"><%= link_to raw('<button type="button" class="btn btn-primary">Editar</button>'), edit_ingredient_path(ingredient) %></td>
+             <% end %>
+            <% if policy(ingredient).destroy? %>
+              <td colspan="1">  <%= link_to raw('<button type="button" class="btn btn-danger">Apagar</button>'), ingredient_path(ingredient),method: :delete %></td>
+            <% end %>
+          </tr>
+        <% end %>
+        </tbody>
+</table>
+<br>
