@@ -1,10 +1,44 @@
 <br>
 <div class="container">
-  <% @ingredients.each do |ingredient| %>
+  <div class="row">
+      <div class="button-box">
+        <% if policy(@ingredient).new? %>
+          <%= link_to raw('<button type="button" class="btn btn-primary">Criar novo ingrediente</button>'), new_ingredient_path(@ingredient) %>
+        <% end %>
+      </div>
+    </div>
 
-  <%= @ingredient.name %>
 
-  <% end %>
 
+
+<table class="table">
+        <thead>
+          <tr class="text-center black font-white">
+            <th colspan="5">Todos os meus ingredientes</th>
+          </tr>
+          <tr class="text-center black font-white">
+            <th>Nome</th>
+            <th>Preço</th>
+            <th>Categoria</th>
+            <th>Modificar</th>
+            <th>Apagar</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @ingredients.each do |ingredient| %>
+
+           <tr class="text-center black font-white">
+            <td colspan="1"><%= ingredient.name %></td>
+            <td colspan="1"><%= ingredient.price %></td>
+            <td colspan="1"><%= ingredient.ingredient_category.name %></td>
+            <% if policy(ingredient).edit? %>
+               <td colspan="1"><%= link_to raw('<button type="button" class="btn btn-primary">Editar</button>'), edit_ingredient_path(ingredient) %></td>
+             <% end %>
+            <% if policy(ingredient).destroy? %>
+              <td colspan="1">  <%= link_to raw('<button type="button" class="btn btn-danger">Apagar</button>'), ingredient_path(ingredient),method: :delete %></td>
+            <% end %>
+          </tr>
+        <% end %>
 </div>
 <br>
