@@ -1,16 +1,18 @@
 .btn-outline {
-  background-color: rgba( 210, 210, 210, 0.8);
-  border: 1px solid white;
+  background-color: #E36278;
+  opacity: 0.7;
+  border: 1px solid #FFFFFC;
   padding: 0.8em;
-  color: white;
+  color: #FFFFFC;
   border-radius: 7px;
   text-align: center;
   font-size: 1.3em;
   width: 100%;
   &:hover {
-    background-color: rgba( 220, 220, 220, 0.5);
-    color: white;
-    border: 1px solid rgba( 230, 230, 230, 0.6);
+    background-color: #E36278;
+    opacity: 0.6;
+    color: #FFFFFC;
+    border: 1px solid #FFFFFC;
     text-decoration: none;
   }
 }

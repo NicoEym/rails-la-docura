@@ -1,0 +1,36 @@
+.font-white {
+  color: #FFFFFC!important;
+}
+
+
+.chocolate-color-background {
+  background-color: #463239;
+}
+
+
+.chocolate-color-border {
+  border-color: #463239;
+}
+
+.milk-color {
+  background-color: #FFFFFC;
+}
+
+
+.btn-chocolate-color {
+  background-color: #583731;
+  border-color: #583731;
+  &:hover {
+    background-color: #463239;
+    border-color: #463239;
+  }
+}
+
+.btn-pink-color {
+  background-color: #E36278;
+  border-color: #E36278;
+  &:hover {
+    background-color: red;
+    border-color: red;
+  }
+}

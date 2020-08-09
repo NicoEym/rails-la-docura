@@ -7,12 +7,14 @@
 @import "card";
 @import "form";
 @import "footer";
+@import "color";
 
 .container {
   min-height:100vh;
   border-radius: 0.5em;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   padding: 1em;
+  background-color: #FFFFFC;
  }
 
  .container-home {
@@ -36,9 +38,7 @@ a { color: inherit;
   }
 }
 
-.font-white {
-  color: white!important;
-}
+
 
 .space_between {
   display: flex;
