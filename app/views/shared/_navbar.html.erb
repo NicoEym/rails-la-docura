@@ -1,5 +1,5 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
-  <%= link_to "#", class: "navbar-brand" do %>
+  <%= link_to root_path, class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
     <% end %>
 
@@ -31,11 +31,17 @@
         <% end %>
         <li class="nav-item">
             <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link font-white" %>
-          </li>
-      <% else %>
-        <li class="nav-item">
-          <%= link_to "Entrar", new_user_session_path, class: "nav-link font-white" %>
         </li>
+      <% else %>
+         <li class="nav-item">
+            <%= link_to "Ver o cardapio", standard_cakes_path, class: "nav-link font-white" %>
+          </li>
+         <li class="nav-item">
+            <%= link_to "Montar o meu bolo", new_customized_cake_path, class: "nav-link font-white" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Entrar", new_user_session_path, class: "nav-link font-white" %>
+          </li>
       <% end %>
     </ul>
   </div>
