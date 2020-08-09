@@ -1,5 +1,7 @@
 <br>
   <div class="container">
+    <h1 class="text-center">Cardapio</h1>
+    <% if user_signed_in? %>
     <div class="row">
       <div class="button-box">
         <% if policy(@standard_cake).new? %>
@@ -7,6 +9,7 @@
         <% end %>
       </div>
     </div>
+    <% end %>
 
   <%= render 'shared/cardstandardcakes', standard_cake: @standard_cakes %>
   </div>

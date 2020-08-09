@@ -29,9 +29,12 @@
             <%= link_to "Messages", "#", class: "nav-link font-white" %>
           </li>
         <% end %>
+        <li class="nav-item">
+            <%= link_to "Sair", destroy_user_session_path, method: :delete, class: "nav-link font-white" %>
+          </li>
       <% else %>
         <li class="nav-item">
-          <%= link_to "Login", new_user_session_path, class: "nav-link font-white" %>
+          <%= link_to "Entrar", new_user_session_path, class: "nav-link font-white" %>
         </li>
       <% end %>
     </ul>

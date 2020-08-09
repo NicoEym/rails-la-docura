@@ -10,7 +10,7 @@ class CustomizedCakePolicy < ApplicationPolicy
   end
 
   def show?
-    user_record_or_user_is_admin?
+    true
   end
 
   def index?
@@ -22,7 +22,7 @@ class CustomizedCakePolicy < ApplicationPolicy
   end
 
   def destroy?
-    true?
+    true
   end
 
   private

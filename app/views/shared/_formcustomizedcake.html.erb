@@ -9,28 +9,43 @@
     <%= simple_form_for [@customized_cake]  do |f| %>
 
       <h5>Escolher a massa:</h5>
-        <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[0] do |ff| %>
-        <%= ff.input :ingredient_id, collection: Ingredient.all_dough_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, html: {class: "form-control"}, label: false %>
+      <% for i in 0..@number_of_choices_for_dough - 1 %>
+        <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+          <%= ff.input :ingredient_id, collection: Ingredient.all_dough_type, label_method: :name, prompt: "Escolher", required: true, html: {class: "form-control"}, label: false %>
+        <% end %>
       <% end %>
 
       <h5>Escolher o recheio:</h5>
-        <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[1] do |ff| %>
-          <%= ff.input :ingredient_id, collection: Ingredient.all_filling_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+      <% number_of_chosen_ingredient = @number_of_choices_for_dough %>
+      <% for i in number_of_chosen_ingredient..(number_of_chosen_ingredient+ @number_of_choices_for_filling - 1) %>
+        <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+          <%= ff.input :ingredient_id, collection: Ingredient.all_filling_type, label_method: :name, prompt: "Escolher", required: true, label: false %>
         <% end %>
+      <% end %>
 
       <h5>Escolher a cobertura:</h5>
-          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[2] do |ff| %>
-          <%= ff.input :ingredient_id, collection: Ingredient.all_icing_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+        <% number_of_chosen_ingredient = number_of_chosen_ingredient + @number_of_choices_for_filling %>
+        <% for i in number_of_chosen_ingredient..(number_of_chosen_ingredient+ @number_of_choices_for_icing - 1) %>
+            <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+              <%= ff.input :ingredient_id, collection: Ingredient.all_icing_type, label_method: :name, prompt: "Escolher", required: true, label: false %>
+             <% end %>
         <% end %>
+
       <h5>Escolher a decoração:</h5>
-          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[3] do |ff| %>
-          <%= ff.input :ingredient_id, collection: Ingredient.all_decoration_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+        <% number_of_chosen_ingredient = number_of_chosen_ingredient + @number_of_choices_for_icing %>
+        <% for i in number_of_chosen_ingredient..(number_of_chosen_ingredient+ @number_of_choices_for_decoration - 1) %>
+          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+            <%= ff.input :ingredient_id, collection: Ingredient.all_decoration_type, label_method: :name, prompt: "Escolher", required: true, label: false %>
+          <% end %>
         <% end %>
 
       <h5>Escolher o formato do bolo:</h5>
-          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[4] do |ff| %>
-          <%= ff.input :ingredient_id, collection: Ingredient.all_shape_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
+        <% number_of_chosen_ingredient = number_of_chosen_ingredient + @number_of_choices_for_format %>
+        <% for i in number_of_chosen_ingredient..(number_of_chosen_ingredient+ @number_of_choices_for_format - 1) %>
+          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+            <%= ff.input :ingredient_id, collection: Ingredient.all_shape_type, label_method: :name, prompt: "Escolher", required: true, label: false %>
           <% end %>
+        <% end %>
       <%= f.submit "Validar o bolo", class: "btn btn-lg btn-primary btn-chocolate-color col-xs-9 col-md-12" %>
     <% end %>
 

@@ -1,11 +1,17 @@
 class CustomizedCakesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :edit]
+  skip_before_action :authenticate_user!, only: [:new, :create, :edit, :update, :show]
   before_action :set_customized_cake, only: [:show, :edit, :update, :destroy]
 
   def new
     @customized_cake = CustomizedCake.new
     authorize @customized_cake
-    5.times { @customized_cake.cake_ingredients.build }
+    @number_of_choices_for_dough = IngredientCategory.find_by(name: "Massa").how_many_items
+    @number_of_choices_for_filling = IngredientCategory.find_by(name: "Recheio").how_many_items
+    @number_of_choices_for_icing = IngredientCategory.find_by(name: "Cobertura").how_many_items
+    @number_of_choices_for_decoration = IngredientCategory.find_by(name: "Decoração").how_many_items
+    @number_of_choices_for_format = IngredientCategory.find_by(name: "Formato do bolo").how_many_items
+    @number_of_cake_ingredient_to_create = @number_of_choices_for_dough + @number_of_choices_for_filling + @number_of_choices_for_icing + @number_of_choices_for_decoration + @number_of_choices_for_format
+    @number_of_cake_ingredient_to_create.times { @customized_cake.cake_ingredients.build }
   end
 
   def create
@@ -26,6 +32,11 @@ class CustomizedCakesController < ApplicationController
   end
 
   def edit
+    @number_of_choices_for_dough = IngredientCategory.find_by(name: "Massa").how_many_items
+    @number_of_choices_for_filling = IngredientCategory.find_by(name: "Recheio").how_many_items
+    @number_of_choices_for_icing = IngredientCategory.find_by(name: "Cobertura").how_many_items
+    @number_of_choices_for_decoration = IngredientCategory.find_by(name: "Decoração").how_many_items
+    @number_of_choices_for_format = IngredientCategory.find_by(name: "Formato do bolo").how_many_items
     @cake_ingredients = CakeIngredient.where(customized_cake: @customized_cake)
   end
 
