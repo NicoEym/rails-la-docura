@@ -25,4 +25,9 @@ class Ingredient < ApplicationRecord
     shape = IngredientCategory.find_by(name: "Formato do bolo")
     self.where(ingredient_category: shape)
   end
+
+
+  def self.number_of_possible_items
+
+  end
 end
