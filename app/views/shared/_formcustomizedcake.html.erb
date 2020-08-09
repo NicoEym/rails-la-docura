@@ -31,7 +31,7 @@
           <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[4] do |ff| %>
           <%= ff.input :ingredient_id, collection: Ingredient.all_shape_type, label_method: :name, prompt: "Choisir", required: true, input_html: { autocomplete: "Perfil"}, label: false %>
           <% end %>
-      <%= f.submit "Validar o bolo", class: "btn btn-lg btn-primary blue-nav col-xs-9 col-md-12" %>
+      <%= f.submit "Validar o bolo", class: "btn btn-lg btn-primary btn-chocolate-color col-xs-9 col-md-12" %>
     <% end %>
 
 </div>
