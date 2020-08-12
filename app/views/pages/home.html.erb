@@ -8,7 +8,7 @@
         <% if current_user.admin? %>
          <div>
           <div class="button-box">
-            <%= link_to("Meus bolos", standard_cakes_path, class: "btn-outline") %>
+            <%= link_to("Meus bolos", cakes_path, class: "btn-outline") %>
           </div >
           <div class="button-box">
             <%= link_to("Meus pedidos", "#", class:"btn-outline")  %>
@@ -22,10 +22,10 @@
       <% else %>
         <div>
           <div class="button-box">
-            <%= link_to("Ver o cardapio", standard_cakes_path, class:"btn-outline")  %>
+            <%= link_to("Ver o cardapio", cakes_path, class:"btn-outline")  %>
           </div >
           <div class="button-box">
-            <%= link_to("Montar o meu bolo", new_customized_cake_path, class:"btn-outline")  %>
+            <%= link_to("Montar o meu bolo", new_cake_path, class:"btn-outline")  %>
           </div>
         </div>
       <% end %>

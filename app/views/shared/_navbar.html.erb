@@ -16,7 +16,7 @@
             <%= link_to "Ingredientes", ingredients_path, class: "nav-link font-white" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Bolos", standard_cakes_path, class: "nav-link font-white" %>
+            <%= link_to "Bolos", cakes_path, class: "nav-link font-white" %>
           </li>
           <li class="nav-item">
             <%= link_to "Ver os pedidos", "#", class: "nav-link font-white" %>
@@ -34,10 +34,10 @@
         </li>
       <% else %>
          <li class="nav-item">
-            <%= link_to "Ver o cardapio", standard_cakes_path, class: "nav-link font-white" %>
+            <%= link_to "Ver o cardapio", cakes_path, class: "nav-link font-white" %>
           </li>
          <li class="nav-item">
-            <%= link_to "Montar o meu bolo", new_customized_cake_path, class: "nav-link font-white" %>
+            <%= link_to "Montar o meu bolo", new_cake_path, class: "nav-link font-white" %>
           </li>
           <li class="nav-item">
             <%= link_to "Entrar", new_user_session_path, class: "nav-link font-white" %>

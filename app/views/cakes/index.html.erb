@@ -1,0 +1,16 @@
+<br>
+  <div class="container">
+    <h1 class="text-center">Cardapio La'Docura</h1>
+    <% if user_signed_in? %>
+    <div class="row">
+      <div class="button-box">
+        <% if policy(@cake).new? %>
+          <%= link_to raw('<button type="button" class="btn btn-primary btn-chocolate-color chocolate-color-background">Criar um novo bolo</button>'), new_cake_path(@cake) %>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
+  <%= render 'shared/cardcakes', cake: @cakes %>
+  </div>
+<br>
