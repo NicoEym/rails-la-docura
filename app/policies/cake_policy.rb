@@ -1,4 +1,4 @@
-class StandardCakePolicy < ApplicationPolicy
+class CakePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
       @scope.all
@@ -6,7 +6,7 @@ class StandardCakePolicy < ApplicationPolicy
   end
 
   def create?
-    user_is_admin?
+    true
   end
 
   def show?
@@ -18,16 +18,20 @@ class StandardCakePolicy < ApplicationPolicy
   end
 
   def update?
-    user_is_admin?
+    true
   end
 
   def destroy?
-    user_is_admin?
+    true
   end
 
   private
 
   def user_is_admin?
     @user.admin?
+  end
+
+  def user_record_or_user_is_admin?
+    @user.admin? || @record == user
   end
 end

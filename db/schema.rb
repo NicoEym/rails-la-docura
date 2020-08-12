@@ -10,27 +10,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_07_235300) do
+ActiveRecord::Schema.define(version: 2020_08_12_022246) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "cake_ingredients", force: :cascade do |t|
-    t.bigint "customized_cake_id"
+    t.bigint "cake_id"
     t.bigint "ingredient_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["customized_cake_id"], name: "index_cake_ingredients_on_customized_cake_id"
+    t.index ["cake_id"], name: "index_cake_ingredients_on_cake_id"
     t.index ["ingredient_id"], name: "index_cake_ingredients_on_ingredient_id"
   end
 
-  create_table "customized_cakes", force: :cascade do |t|
+  create_table "cakes", force: :cascade do |t|
     t.date "delivery_date"
     t.float "price"
     t.string "size"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.boolean "validated", default: false, null: false
+    t.string "name"
+    t.string "image_url"
+  end
+
+  create_table "carts", force: :cascade do |t|
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
   create_table "ingredient_categories", force: :cascade do |t|
@@ -49,12 +58,11 @@ ActiveRecord::Schema.define(version: 2020_08_07_235300) do
     t.index ["ingredient_category_id"], name: "index_ingredients_on_ingredient_category_id"
   end
 
-  create_table "standard_cakes", force: :cascade do |t|
-    t.string "name"
-    t.float "price"
-    t.string "image_url"
+  create_table "orders", force: :cascade do |t|
+    t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_orders_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -70,7 +78,9 @@ ActiveRecord::Schema.define(version: 2020_08_07_235300) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "cake_ingredients", "customized_cakes"
+  add_foreign_key "cake_ingredients", "cakes"
   add_foreign_key "cake_ingredients", "ingredients"
+  add_foreign_key "carts", "users"
   add_foreign_key "ingredients", "ingredient_categories"
+  add_foreign_key "orders", "users"
 end

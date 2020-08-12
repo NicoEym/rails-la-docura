@@ -5,7 +5,7 @@
     <% IngredientCategory.all.each do |category|%>
     <h5><%= category.name %></h5>
 
-      <% @customized_cake.ingredients.where(ingredient_category: category).each do |ingredient| %>
+      <% @cake.ingredients.where(ingredient_category: category).each do |ingredient| %>
         <p><%= ingredient.name %></p>
       <% end %>
     <% end %>
@@ -13,8 +13,8 @@
 
     <div class="row">
       <div class="button-box">
-      <% if policy(@customized_cake).edit? %>
-          <%= link_to raw('<button type="button" class="btn btn-primary btn-chocolate-color">Mudei de ideia</button>'), edit_customized_cake_path(@customized_cake) %>
+      <% if policy(@cake).edit? %>
+          <%= link_to raw('<button type="button" class="btn btn-primary btn-chocolate-color">Mudei de ideia</button>'), edit_cake_path(@cake) %>
         <% end %>
       </div>
     </div>

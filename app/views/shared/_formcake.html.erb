@@ -1,16 +1,23 @@
 <div class="log-form col-xs-12 col-md-4">
-  <% if current_page?(controller: 'customized_cakes', action: 'new')  %>
+  <% if current_page?(controller: 'cakes', action: 'new')  %>
     <h2>Montar o meu bolo</h2>
   <% else %>
     <h2>Editar o meu bolo</h2>
   <% end %>
 
 
-    <%= simple_form_for [@customized_cake]  do |f| %>
+    <%= simple_form_for [@cake]  do |f| %>
+    <% if user_signed_in? %>
+      <% if current_user.admin? %>
+        <%= f.input :name, label: 'Nome:'%>
+        <%= f.input :price, label: "Preço:" %>
+        <%= f.input :image_url, label: "Foto:" %>
+      <% end %>
+    <% end %>
 
       <h5>Escolher a massa:</h5>
       <% for i in 0..@number_of_choices_for_dough - 1 %>
-        <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+        <%= f.fields_for :cake_ingredients, @cake.cake_ingredients[i] do |ff| %>
           <%= ff.input :ingredient_id, collection: Ingredient.all_dough_type, label_method: :name, prompt: "Escolher", required: true, html: {class: "form-control"}, label: false %>
         <% end %>
       <% end %>
@@ -18,7 +25,7 @@
       <h5>Escolher o recheio:</h5>
       <% number_of_chosen_ingredient = @number_of_choices_for_dough %>
       <% for i in number_of_chosen_ingredient..(number_of_chosen_ingredient+ @number_of_choices_for_filling - 1) %>
-        <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+        <%= f.fields_for :cake_ingredients, @cake.cake_ingredients[i] do |ff| %>
           <%= ff.input :ingredient_id, collection: Ingredient.all_filling_type, label_method: :name, prompt: "Escolher", required: true, label: false %>
         <% end %>
       <% end %>
@@ -26,7 +33,7 @@
       <h5>Escolher a cobertura:</h5>
         <% number_of_chosen_ingredient = number_of_chosen_ingredient + @number_of_choices_for_filling %>
         <% for i in number_of_chosen_ingredient..(number_of_chosen_ingredient+ @number_of_choices_for_icing - 1) %>
-            <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+            <%= f.fields_for :cake_ingredients, @cake.cake_ingredients[i] do |ff| %>
               <%= ff.input :ingredient_id, collection: Ingredient.all_icing_type, label_method: :name, prompt: "Escolher", required: true, label: false %>
              <% end %>
         <% end %>
@@ -34,7 +41,7 @@
       <h5>Escolher a decoração:</h5>
         <% number_of_chosen_ingredient = number_of_chosen_ingredient + @number_of_choices_for_icing %>
         <% for i in number_of_chosen_ingredient..(number_of_chosen_ingredient+ @number_of_choices_for_decoration - 1) %>
-          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+          <%= f.fields_for :cake_ingredients, @cake.cake_ingredients[i] do |ff| %>
             <%= ff.input :ingredient_id, collection: Ingredient.all_decoration_type, label_method: :name, prompt: "Escolher", required: true, label: false %>
           <% end %>
         <% end %>
@@ -42,7 +49,7 @@
       <h5>Escolher o formato do bolo:</h5>
         <% number_of_chosen_ingredient = number_of_chosen_ingredient + @number_of_choices_for_format %>
         <% for i in number_of_chosen_ingredient..(number_of_chosen_ingredient+ @number_of_choices_for_format - 1) %>
-          <%= f.fields_for :cake_ingredients, @customized_cake.cake_ingredients[i] do |ff| %>
+          <%= f.fields_for :cake_ingredients, @cake.cake_ingredients[i] do |ff| %>
             <%= ff.input :ingredient_id, collection: Ingredient.all_shape_type, label_method: :name, prompt: "Escolher", required: true, label: false %>
           <% end %>
         <% end %>
