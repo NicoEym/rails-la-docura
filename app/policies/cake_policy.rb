@@ -1,8 +1,13 @@
 class CakePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      @scope.all
+      @scope.where(user_id: admin_id, on_the_menu: true)
+
     end
+
+  def admin_id
+    User.find_by(admin: true).id
+  end
   end
 
   def create?
@@ -31,7 +36,5 @@ class CakePolicy < ApplicationPolicy
     @user.admin?
   end
 
-  def user_record_or_user_is_admin?
-    @user.admin? || @record == user
-  end
+
 end

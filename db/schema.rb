@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_12_022246) do
+ActiveRecord::Schema.define(version: 2020_08_13_003640) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -33,6 +33,9 @@ ActiveRecord::Schema.define(version: 2020_08_12_022246) do
     t.boolean "validated", default: false, null: false
     t.string "name"
     t.string "image_url"
+    t.boolean "on_the_menu"
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_cakes_on_user_id"
   end
 
   create_table "carts", force: :cascade do |t|
@@ -80,6 +83,7 @@ ActiveRecord::Schema.define(version: 2020_08_12_022246) do
 
   add_foreign_key "cake_ingredients", "cakes"
   add_foreign_key "cake_ingredients", "ingredients"
+  add_foreign_key "cakes", "users"
   add_foreign_key "carts", "users"
   add_foreign_key "ingredients", "ingredient_categories"
   add_foreign_key "orders", "users"
