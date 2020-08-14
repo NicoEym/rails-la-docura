@@ -1,0 +1,5 @@
+meta_product_name: "La' Docura"
+meta_title: "La' Docura - Confeitos artesanais"
+meta_description: "Bolos super gostosos"
+meta_image: "cover.png" # should exist in `app/assets/images/`
+twitter_account: "@product_twitter_account"   # required for Twitter Cards
