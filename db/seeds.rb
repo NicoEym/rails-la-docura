@@ -54,5 +54,5 @@ Ingredient.create(name: "Bonita", ingredient_category: decoration)
 Ingredient.create(name: "Verão", ingredient_category: decoration)
 
 Ingredient.create(name: "Quadrado", ingredient_category: shape)
-Ingredient.create(name: "Rodondo", ingredient_category: shape)
+Ingredient.create(name: "Redondo", ingredient_category: shape)
 Ingredient.create(name: "Triangulo", ingredient_category: shape)
