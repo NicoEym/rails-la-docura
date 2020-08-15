@@ -1,11 +1,19 @@
 class CakePolicy < ApplicationPolicy
   class Scope < Scope
     def resolve
-      @scope.where(user_id: admin_id, on_the_menu: true)
+      if @user.nil? || user_is_admin?
+        @scope.all
+      else
+        @scope.where(user_id: admin_id, on_the_menu: true)
+      end
     end
 
     def admin_id
       User.find_by(admin: true).id
+    end
+
+    def user_is_admin?
+      @user.admin?
     end
   end
 
