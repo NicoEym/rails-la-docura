@@ -17,6 +17,15 @@
           <%= link_to("Meus ingredientes", ingredients_path, class:"btn-outline")  %>
           </div>
         </div>
+        <% else %>
+          <div>
+            <div class="button-box">
+              <%= link_to("Ver o cardapio", cakes_path, class:"btn-outline")  %>
+            </div >
+            <div class="button-box">
+              <%= link_to("Montar o meu bolo", new_cake_path, class:"btn-outline")  %>
+            </div>
+          </div>
         <% end %>
 
       <% else %>

@@ -7,13 +7,11 @@
 
 
     <%= simple_form_for [@cake]  do |f| %>
-    <% if user_signed_in? %>
-      <% if current_user.admin? %>
+    <% if user_signed_in? && current_user.admin? %>
         <%= f.input :name, label: 'Nome:'%>
         <%= f.input :price, label: "Preço:" %>
         <%= f.input :image_url, label: "Foto:" %>
         <%= f.input :on_the_menu, as: :boolean, checked_value: true, unchecked_value: false, label: "Colocar no cardapio?" %>
-      <% end %>
     <% end %>
 
       <h5>Escolher a massa:</h5>
