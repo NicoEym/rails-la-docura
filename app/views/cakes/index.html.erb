@@ -5,7 +5,7 @@
 
   <%= render 'shared/cardcakes', cake: @cakes %>
 
-  <% if user_signed_in? %>
+  <% if user_signed_in? && current_user.admin? %>
     <div class="row">
       <div class="button-box">
         <% if policy(@cake).new? %>
