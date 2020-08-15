@@ -10,7 +10,7 @@
     <% if user_signed_in? && current_user.admin? %>
         <%= f.input :name, label: 'Nome:'%>
         <%= f.input :price, label: "Preço:" %>
-        <%= f.input :image_url, label: "Foto:" %>
+        <%= f.input :photo, as: :file %>
         <%= f.input :on_the_menu, as: :boolean, checked_value: true, unchecked_value: false, label: "Colocar no cardapio?" %>
     <% end %>
 

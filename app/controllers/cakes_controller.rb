@@ -1,5 +1,5 @@
 class CakesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :index, :show]
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_cake, only: [:show, :edit, :update, :destroy]
 
   def new
@@ -74,6 +74,6 @@ class CakesController < ApplicationController
   end
 
   def cake_params
-    params.require(:cake).permit(:name, :price, :on_the_menu, :image_url, cake_ingredients_attributes: [:id, :ingredient_id, :_destroy])
+    params.require(:cake).permit(:name, :price, :on_the_menu, :photo, cake_ingredients_attributes: [:id, :ingredient_id, :_destroy])
   end
 end

@@ -2,16 +2,20 @@
   <div class="container">
 
   <div class="card-show-cake">
-    <% if @cake.image_url.nil? %>
+    <% if @cake.photo.nil? %>
       <img src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
     <% else %>
-      <%= image_tag @cake.image_url %>
+      <%= cl_image_tag @cake.photo.key %>
     <% end %>
 
     <div class="card-cake-infos">
       <div>
        <h1> <%= @cake.name.nil? ? "Meu bolo personalizado" : @cake.name %></h1>
-
+          <% if current_user.admin? %>
+            <h2>
+              <%= @cake.on_the_menu ?  "No cardápio" : "Não está visivel no cardápio" %>
+            </h2>
+          <% end %>
            <% IngredientCategory.all.each do |category|%>
           <p><b><%= category.name %>:</b>
 
@@ -31,22 +35,13 @@
 
           <% if user_signed_in? %>
             <% if policy(@cake).edit? %>
-                <%= link_to raw('<button type="button" class="btn btn-primary btn-chocolate-color">Mudei de ideia</button>'), edit_cake_path(@cake) %>
+                <%= link_to raw('<button type="button" class="btn btn-primary btn-pink-color">Mudar esse bolo</button>'), edit_cake_path(@cake) %>
+              <% end %>
+              <% if policy(@cake).destroy? %>
+                <%= link_to raw('<button type="button" class="btn btn-primary btn-gold-color">Apagar esse bolo</button>'), cake_path(@cake), method: :delete %>
               <% end %>
           <% end %>
-
-
       </div>
-
-</div>
-
-
-
-
-
-
-
-
-
+    </div>
   </div>
 <br>
