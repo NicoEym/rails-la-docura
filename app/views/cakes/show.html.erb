@@ -1,34 +1,52 @@
 <br>
   <div class="container">
-    <h3 class="text-center">Bolo</h3>
-    <div class="text-center">
-    <% IngredientCategory.all.each do |category|%>
-    <h5><%= category.name %></h5>
 
-      <% @cake.ingredients.where(ingredient_category: category).each do |ingredient| %>
-        <p><%= ingredient.name %></p>
+  <div class="card-show-cake">
+    <% if @cake.image_url.nil? %>
+      <img src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
+    <% else %>
+      <%= image_tag @cake.image_url %>
+    <% end %>
+
+    <div class="card-cake-infos">
+      <div>
+       <h1> <%= @cake.name.nil? ? "Meu bolo personalizado" : @cake.name %></h1>
+
+           <% IngredientCategory.all.each do |category|%>
+          <p><b><%= category.name %>:</b>
+
+        <% @cake.ingredients.where(ingredient_category: category).each do |ingredient| %>
+          <%= ingredient.name %>
+        <% end %>
+        </p>
       <% end %>
+    </div>
+    <% unless @cake.price.nil?  %>
+      <h2 class="card-cake-pricing">R$ <%= @cake.price %></h2>
     <% end %>
   </div>
 
-    <% if user_signed_in? %>
-
-
-      <div class="row">
-        <div class="button-box">
-        <% if policy(@cake).edit? %>
-            <%= link_to raw('<button type="button" class="btn btn-primary btn-chocolate-color">Mudei de ideia</button>'), edit_cake_path(@cake) %>
-          <% end %>
-        </div>
-      </div>
-    <% end %>
-    <div class="row">
       <div class="button-box">
-
           <%= link_to raw('<button type="button" class="btn btn-primary btn-chocolate-color">Colocar no meu carrinho</button>') %>
 
+          <% if user_signed_in? %>
+            <% if policy(@cake).edit? %>
+                <%= link_to raw('<button type="button" class="btn btn-primary btn-chocolate-color">Mudei de ideia</button>'), edit_cake_path(@cake) %>
+              <% end %>
+          <% end %>
+
+
       </div>
-    </div>
+
+</div>
+
+
+
+
+
+
+
+
 
   </div>
 <br>

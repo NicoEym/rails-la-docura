@@ -34,3 +34,44 @@
   opacity: 0;
   border-radius: 1em;
 }
+
+.card-show-cake {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.2);
+}
+
+.card-show-cake > img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+
+}
+
+.card-show-cake h2 {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-show-cake p {
+  font-size: 1.1rem;
+  opacity: .7;
+  margin: 0;
+}
+
+
+.card-show-cake .card-cake-infos {
+  padding: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
+.card-cake-infos .card-cake-user {
+  position: absolute;
+  right: 16px;
+  top: -20px;
+  width: 40px;
+}
