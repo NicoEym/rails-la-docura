@@ -22,7 +22,7 @@ class CakePolicy < ApplicationPolicy
   end
 
   def update?
-    true
+    user_is_admin_or_record_user?
   end
 
   def destroy?
@@ -33,5 +33,9 @@ class CakePolicy < ApplicationPolicy
 
   def user_is_admin?
     @user.admin?
+  end
+
+  def user_is_admin_or_record_user?
+    user_is_admin?|| @record.user == @user
   end
 end
