@@ -18,6 +18,13 @@ class CakesController < ApplicationController
     @cake = Cake.new(cake_params)
     authorize @cake
     @cake.user_id = current_user.id
+
+    if cake_params[:on_the_menu] == true && current_user.admin?
+      @cake.on_the_menu == true
+    else
+      @cake.on_the_menu == false
+    end
+
     if @cake.save
       if user_signed_in? && current_user.admin?
         redirect_to cakes_path
