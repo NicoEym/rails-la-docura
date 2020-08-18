@@ -1,7 +1,7 @@
 <br>
 <div class="container">
   <div class="row">
-      <div class="button-box">
+      <div class="button-box justify-center">
         <% if policy(@ingredient).new? %>
           <%= link_to raw('<button type="button" class="btn btn-primary btn-chocolate-color">Criar novo ingrediente</button>'), new_ingredient_path(@ingredient) %>
         <% end %>

@@ -11,7 +11,7 @@
     <div class="card-cake-infos">
       <div>
        <h1> <%= @cake.name.nil? ? "Meu bolo personalizado" : @cake.name %></h1>
-          <% if current_user.admin? %>
+          <% if user_signed_in? && current_user.admin? %>
             <h2>
               <%= @cake.on_the_menu ?  "No cardápio" : "Não está visivel no cardápio" %>
             </h2>
