@@ -5,14 +5,12 @@
         <%= link_to("", cake_path(cake.id), class:"card-link")  %>
          <div>
           <h2 class="text-center"><%= cake.name %> </h2>
-          <p><%= cake.price %></p>
-          <% if current_user.admin? %>
+          <p>R$ <%= cake.price %></p>
+          <% if user_signed_in? && current_user.admin? %>
             <p>
               <%= cake.on_the_menu == true ?  "No cardápio" : "Não está visivel no cardápio" %>
             </p>
           <% end %>
-
-
         </div>
       </div>
     </div>
