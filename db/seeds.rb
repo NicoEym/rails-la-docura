@@ -22,6 +22,16 @@ user = User.new(
 
 user.save!
 
+user = User.new(
+
+  email: "convidado@gmail.com",
+  admin: false,
+  password:  'convidado',
+  password_confirmation: 'convidado'
+)
+
+user.save!
+
 dough = IngredientCategory.create(name: "Massa", how_many_items: 1)
 filling = IngredientCategory.create(name: "Recheio", how_many_items: 2)
 icing = IngredientCategory.create(name: "Cobertura", how_many_items: 2)
