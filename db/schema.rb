@@ -46,12 +46,11 @@ ActiveRecord::Schema.define(version: 2020_08_15_221923) do
   end
 
   create_table "cakes", force: :cascade do |t|
-    t.date "delivery_date"
     t.float "price"
     t.string "size"
+    t.boolean "validated", default: false, null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.boolean "validated", default: false, null: false
     t.string "name"
     t.string "image_url"
     t.boolean "on_the_menu"
