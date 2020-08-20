@@ -2,7 +2,7 @@
   <br>
   <br>
     <div class="log-form col-xs-12 col-md-4">
-      <h2>Conectar-se</h2>
+      <h2>Conectar</h2>
 
       <%= simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <div class="form-inputs">
@@ -17,7 +17,9 @@
         </div>
 
         <div class="form-actions">
-          <%= f.button :submit, "Entrar" %>
+           <%= button_tag(type: 'submit', class: "btn-outline") do %>
+             Conectar
+      <% end %>
         </div>
       <% end %>
 
