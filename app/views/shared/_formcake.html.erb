@@ -8,10 +8,10 @@
 
     <%= simple_form_for [@cake]  do |f| %>
     <% if user_signed_in? && current_user.admin? %>
-        <%= f.input :name, label: 'Nome:'%>
-        <%= f.input :price, label: "Preço:" %>
-        <%= f.input :photo, as: :file %>
-        <%= f.input :on_the_menu, as: :boolean, checked_value: true, unchecked_value: false, label: "Colocar no cardapio?" %>
+        <%= f.input :name, label: 'Nome:', required: true %>
+        <%= f.input :price, label: "Preço:" , required: true%>
+        <%= f.input :photo, as: :file , required: true%>
+        <%= f.input :on_the_menu, as: :boolean, checked_value: true, unchecked_value: false, label: "Colocar no cardapio?" , required: true %>
     <% end %>
 
       <h5>Escolher a massa:</h5>

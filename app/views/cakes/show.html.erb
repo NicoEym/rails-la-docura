@@ -36,12 +36,12 @@
           <% if user_signed_in? %>
             <% if policy(@cake).edit? %>
 
-                  <%= link_to raw('<button type="button" class="btn btn-primary btn-pink-color">Mudar esse bolo</button>'), edit_cake_path(@cake) %>
+                  <%= link_to raw('<button type="button" class="btn btn-primary btn-pink-color">Mudar este bolo</button>'), edit_cake_path(@cake) %>
 
               <% end %>
               <% if policy(@cake).destroy? %>
 
-                    <%= link_to raw('<button type="button" class="btn btn-primary btn-gold-color">Apagar esse bolo</button>'), cake_path(@cake), method: :delete %>
+                    <%= link_to raw('<button type="button" class="btn btn-primary btn-gold-color">Apagar este bolo</button>'), cake_path(@cake), method: :delete %>
                   <% end %>
 
           <% end %>
