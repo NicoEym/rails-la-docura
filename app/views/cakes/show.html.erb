@@ -2,10 +2,10 @@
   <div class="container">
 
   <div class="card-show-cake">
-    <% if @cake.photo.nil? %>
-      <img src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
+    <% if @cake.photo.attached? %>
+        <%= cl_image_tag @cake.photo.key %>
     <% else %>
-      <%= cl_image_tag @cake.photo.key %>
+      <img src="https://images.unsplash.com/photo-1534766555764-ce878a5e3a2b?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60" />
     <% end %>
 
     <div class="card-cake-infos">
@@ -35,13 +35,17 @@
 
           <% if user_signed_in? %>
             <% if policy(@cake).edit? %>
-                <%= link_to raw('<button type="button" class="btn btn-primary btn-pink-color">Mudar esse bolo</button>'), edit_cake_path(@cake) %>
+
+                  <%= link_to raw('<button type="button" class="btn btn-primary btn-pink-color">Mudar esse bolo</button>'), edit_cake_path(@cake) %>
+
               <% end %>
               <% if policy(@cake).destroy? %>
-                <%= link_to raw('<button type="button" class="btn btn-primary btn-gold-color">Apagar esse bolo</button>'), cake_path(@cake), method: :delete %>
-              <% end %>
+
+                    <%= link_to raw('<button type="button" class="btn btn-primary btn-gold-color">Apagar esse bolo</button>'), cake_path(@cake), method: :delete %>
+                  <% end %>
+
           <% end %>
-      </div>
+        </div>
     </div>
   </div>
 <br>
