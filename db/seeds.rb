@@ -33,8 +33,8 @@ user = User.new(
 user.save!
 
 dough = IngredientCategory.create(name: "Massa", how_many_items: 1)
-filling = IngredientCategory.create(name: "Recheio", how_many_items: 2)
-icing = IngredientCategory.create(name: "Cobertura", how_many_items: 2)
+filling = IngredientCategory.create(name: "Recheio", how_many_items: 1)
+icing = IngredientCategory.create(name: "Cobertura", how_many_items: 1)
 decoration = IngredientCategory.create(name: "Decoração",how_many_items: 1)
 shape = IngredientCategory.create(name: "Formato do bolo", how_many_items: 1)
 

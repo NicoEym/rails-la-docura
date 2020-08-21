@@ -32,6 +32,7 @@ class CakesController < ApplicationController
         redirect_to cake_path(@cake)
       end
     else
+      @cake.cake_ingredients.new unless @cake.cake_ingredients.any?
       render :new
     end
   end
